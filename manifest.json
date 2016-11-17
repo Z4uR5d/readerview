@@ -1,0 +1,55 @@
+{
+	"manifest_version": 2,
+	"name": "Reader View",
+	"description": "Make pages more readable by stripping away clutter like buttons, ads, background images. This is a porting of Firefox Reader View.",
+	"version": "1",
+	"background": {
+		"scripts": [
+			"js/background.js"
+		]
+	},
+	"web_accessible_resources": [
+		"css/reset.css", 
+		"css/readermode.css",
+		"css/aboutReaderControls.css",
+		"img/RM-Close-24x24.svg",
+		"img/RM-Type-Controls-24x24.svg",
+		"img/RM-Minus-24x24.svg",
+		"img/RM-Plus-24x24.svg",
+		"img/RM-Type-Controls-Arrow.svg",
+		"html/popup-sorry.html"
+	],
+    "content_scripts": [
+		{
+			"matches": [
+				"http://*/*",
+				"https://*/*"
+			],
+			"js": [
+				"js/jquery-3.1.1.slim.min.js", 
+				"js/Readability.js", 
+				"js/content.js"
+			]
+		}
+	],
+	"permissions": [
+		"tabs",
+		"storage",
+		"http://*/*", 
+		"https://*/*"
+	],
+	"browser_action": {
+		"default_icon": {
+			"32": "img/icon.png"
+		},
+		"default_title": "Reader View"
+	},
+    "icons": {
+        "16": "img/storeicon-16.png",
+        "48": "img/storeicon-48.png",
+        "128": "img/storeicon-128.png"
+    },
+    "developer": {
+        "name": "Paolo Bernardi"
+    }
+}
